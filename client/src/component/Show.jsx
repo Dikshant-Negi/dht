@@ -36,7 +36,7 @@ const ChordDHT = ({ nodes }) => {
                                 dy=".3em"
                                 fontSize="10" // Set font size for better visibility
                             >
-                                {node.ip} {/* Display the IP address */}
+                                {node.node_id} {/* Display the IP address */}
                             </text>
 
                             {/* Draw lines to the successor node */}

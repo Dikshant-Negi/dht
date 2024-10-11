@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import AddNode from './component/AddNode';
 import Show from './component/Show';
- // Make sure to import ChordDHT
 
 function App() {
     const [nodes, setNodes] = useState([]);
@@ -18,7 +17,6 @@ function App() {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
             setNodes(data);
         } catch (error) {
             console.log('Error in fetch', error);
@@ -26,11 +24,21 @@ function App() {
     }
 
     return (
-        <>
-            
-            <AddNode onAddNode={fetchNodes} /> 
-            <Show nodes={nodes} /> 
-        </>
+        <div className="app-container">
+            <header>
+                <h1>Distributed Hash Table Visualization</h1>
+                <p>Add a node to the DHT and visualize the current nodes.</p>
+            </header>
+
+            <div className="content">
+                <div className="left-panel">
+                    <AddNode onAddNode={fetchNodes} />
+                </div>
+                <div className="right-panel">
+                    <Show nodes={nodes} />
+                </div>
+            </div>
+        </div>
     );
 }
 
